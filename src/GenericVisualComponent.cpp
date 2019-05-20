@@ -279,7 +279,7 @@ StringGenericVisualComponent::StringGenericVisualComponent(const StringParameter
 	pLineEdit->setText(param.m_value);
 
 	connect(pLineEdit, &QLineEdit::editingFinished, [=] {onValueChangedByGui(pLineEdit->text()); });
-	connect(this, &StringGenericVisualComponent::onValueChangedByProgram, pLineEdit, &QLineEdit::setText);
+	connect(this, &StringGenericVisualComponent::valueChangedByProgram, pLineEdit, &QLineEdit::setText);
 
 	connect(&param, &StringParameter::valueChangedByProgram, this, &StringGenericVisualComponent::onValueChangedByProgram);
 	connect(this, &StringGenericVisualComponent::valueChangedByGui, &param, &StringParameter::onValueChangedByGui);
@@ -329,7 +329,7 @@ FileGenericVisualComponent::FileGenericVisualComponent(const FileParameter & par
 	connect(pButton, &QPushButton::clicked, this, &FileGenericVisualComponent::onButtonClicked);
 
 	connect(pLineEdit, &QLineEdit::editingFinished, [=] {onValueChangedByGui(pLineEdit->text()); });
-	connect(this, &FileGenericVisualComponent::onValueChangedByProgram, pLineEdit, &QLineEdit::setText);
+	connect(this, &FileGenericVisualComponent::valueChangedByProgram, pLineEdit, &QLineEdit::setText);
 
 	connect(&param, &FileParameter::valueChangedByProgram, this, &FileGenericVisualComponent::onValueChangedByProgram);
 	connect(this, &FileGenericVisualComponent::valueChangedByGui, [=](QString value) {pLineEdit->setText(value); });
@@ -401,7 +401,7 @@ FolderGenericVisualComponent::FolderGenericVisualComponent(const FolderParameter
 	connect(pButton, &QPushButton::clicked, this, &FolderGenericVisualComponent::onButtonClicked);
 
 	connect(pLineEdit, &QLineEdit::editingFinished, [=] {onValueChangedByGui(pLineEdit->text()); });
-	connect(this, &FolderGenericVisualComponent::onValueChangedByProgram, pLineEdit, &QLineEdit::setText);
+	connect(this, &FolderGenericVisualComponent::valueChangedByProgram, pLineEdit, &QLineEdit::setText);
 
 	connect(&param, &FolderParameter::valueChangedByProgram, this, &FolderGenericVisualComponent::onValueChangedByProgram);
 	connect(this, &FolderGenericVisualComponent::valueChangedByGui, [=](QString value) {pLineEdit->setText(value); });

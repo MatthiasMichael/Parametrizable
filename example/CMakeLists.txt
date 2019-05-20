@@ -1,0 +1,29 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+
+PROJECT( Parametrizable_Example )
+
+FIND_PACKAGE( Qt5Core )
+FIND_PACKAGE( Qt5Gui )
+FIND_PACKAGE( Qt5Widgets )
+
+SET( CMAKE_AUTOMOC ON )
+
+INCLUDE_DIRECTORIES(
+	../../include
+	${CMAKE_CURRENT_BINARY_DIR}
+)
+
+ADD_EXECUTABLE ( ${PROJECT_NAME}
+	ExampleWidget.h
+	ExampleWidget.cpp
+	main.cpp
+)
+
+TARGET_LINK_LIBRARIES( ${PROJECT_NAME}
+	Parametrizable
+	Qt5::Core
+	Qt5::Gui
+	Qt5::Widgets
+)
+
+SET_PROPERTY( TARGET ${PROJECT_NAME} PROPERTY FOLDER "Examples")
