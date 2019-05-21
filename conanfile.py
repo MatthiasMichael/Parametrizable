@@ -6,12 +6,14 @@ class ParametrizableConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     exports_sources = "cmake/*", "include/*", "src/*"
+    options = { "build_examples": [True, False]}
+    default_options = { "build_examples": False }
 
     description = """Provides an interface to attach parameters to objects and manipulate them via a Qt UI"""
 
     def build(self):
         cmake = CMake(self)
-        cmake.definitions["BUILD_EXAMPLES"] = False
+        cmake.definitions["BUILD_EXAMPLES"] = self.options.build_examples
         cmake.configure(source_dir="%s/cmake" % self.source_folder)
         cmake.build()
 
