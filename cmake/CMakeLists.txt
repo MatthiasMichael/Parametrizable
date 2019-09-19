@@ -13,7 +13,7 @@ FIND_PACKAGE( Qt5Widgets )
 
 SET( CMAKE_AUTOMOC ON)
 
-SET( BUILD_EXAMPLES ON CACHE BOOL "Build example projects.")
+SET( BUILD_EXAMPLES OFF CACHE BOOL "Build example projects.")
 
 INCLUDE_DIRECTORIES(
 	../include/
